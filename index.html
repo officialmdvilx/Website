@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet Dave — Portfolio & Research</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', "Segoe UI", 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+                    },
+                    colors: {
+                        darkBg: '#050505',
+                        darkCard: '#0f0f11',
+                        darkBorder: '#27272a',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            width: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #ffffff;
+            background-color: transparent;
+            overflow-x: hidden;
+        }
+
+        /* Cinematic Background Video Wrapper */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            z-index: 0;
+            background-color: #050505;
+        }
+
+        .video-background video {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            filter: brightness(0.65) contrast(1.1);
+        }
+
+        /* Cinematic Gradient Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.92) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Custom scrollbar for inner views */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(5, 5, 5, 0.8);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .view-section {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .view-section.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        /* Glassmorphism card effects */
+        .glass-card {
+            background: rgba(15, 15, 17, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white relative">
+
+    <!-- Cinematic Video Background -->
+    <div class="video-background">
+        <video autoplay muted loop playsinline id="bgVideo">
+            <source src="https://www.image2url.com/r2/default/videos/1792340505419-8b0a9216-5f5f-4252-b012-cbd98e3abcab.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+    </div>
+
+    <!-- Gradient Dim Overlay -->
+    <div class="overlay"></div>
+
+    <!-- NOTIFICATION TOAST -->
+    <div id="toast" class="fixed top-6 right-6 z-50 transform translate-y-[-200%] transition-transform duration-300 bg-neutral-900 border border-neutral-700 text-white px-5 py-3 rounded-xl shadow-2xl flex items-center space-x-3">
+        <i id="toastIcon" class="fa-solid fa-circle-check text-green-400 text-lg"></i>
+        <div>
+            <h4 id="toastTitle" class="text-sm font-bold">Success</h4>
+            <p id="toastMessage" class="text-xs text-neutral-400">Action completed successfully.</p>
+        </div>
+    </div>
+
+    <!-- ==================== VIEW 1: HOME ==================== -->
+    <section id="view-home" class="view-section active w-full h-screen flex-col justify-between p-6 sm:p-14 z-10 relative">
+        <!-- Top Section: Title & Clean Socials -->
+        <header class="relative z-20">
+            <!-- Increased H1 font size for mobile -->
+            <h1 style="font-size: clamp(3.4rem, 11vw, 5.2rem); font-weight: 800; line-height: 0.98; letter-spacing: -2px; text-transform: uppercase; text-shadow: 0 4px 25px rgba(0,0,0,0.7); background: linear-gradient(180deg, #ffffff 0%, #dcdcdc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                Meet Dave
+            </h1>
+            <div class="text-neutral-300 text-[11px] font-bold tracking-[2px] uppercase pb-0.5 mt-1 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+                (mdvilx);
+            </div>
+            
+            <!-- Made social icons smaller on mobile -->
+             <div class="flex gap-6 items-center mt-6 flex-wrap">
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-white text-xl opacity-75 hover:opacity-100 hover:-translate-y-0.5 transition-all drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+                    <i class="fa-brands fa-instagram"></i>
+                </a> 
+                <a href="https://github.com/officialmeet" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-white text-xl opacity-75 hover:opacity-100 hover:-translate-y-0.5 transition-all drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="mailto:meetdave.dev@gmail.com" aria-label="Email" class="text-white text-xl opacity-75 hover:opacity-100 hover:-translate-y-0.5 transition-all drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+            </div>
+        </header>
+
+        <!-- LAPTOP-ONLY BIG HOVER-REVEAL IMAGE (Hidden on Mobile) -->
+        <div class="hidden lg:block absolute right-16 top-1/2 -translate-y-1/2 z-20">
+            <div class="w-[420px] h-[540px] rounded-3xl overflow-hidden glass-card border border-white/20 shadow-2xl transition-all duration-500 opacity-0 hover:opacity-100 cursor-pointer group">
+                <img src="https://cdn.phototourl.com/member/2026-10-19-92b8a4dd-da55-4bc5-90e7-355be09269f5.jpg" alt="Meet Dave" class="w-full h-full object-cover filter grayscale contrast-125 group-hover:scale-105 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6">
+                    <span class="text-xs font-mono text-neutral-400">(mdvilx) // 2026</span>
+                    <h4 class="text-xl font-bold text-white mt-1">Meet Dave</h4>
+                    <p class="text-xs text-neutral-300 mt-0.5">Computer Science DS & AI Undergraduate</p>
+                </div>
+            </div>
+            <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] font-mono text-neutral-400/80 uppercase tracking-widest whitespace-nowrap bg-black/60 px-3 py-1 rounded-full backdrop-blur-md border border-white/10 pointer-events-none">
+            </div>
+        </div>
+
+        <!-- Bottom Section: Tiny/Compact Navigation Links for Mobile -->
+        <div class="flex flex-col gap-3 items-center text-center pb-2 relative z-20">
+            <div class="flex gap-4 sm:gap-9 flex-wrap justify-center">
+                <button onclick="switchView('projects')" class="text-neutral-200 hover:text-white text-[10px] sm:text-sm font-bold tracking-[1.5px] sm:tracking-[2px] uppercase border-b-[1px] sm:border-b-[1.5px] border-white/40 hover:border-white pb-0.5 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] transition-all hover:-translate-y-px">
+                    Projects
+                </button>
+                <button onclick="switchView('research')" class="text-neutral-200 hover:text-white text-[10px] sm:text-sm font-bold tracking-[1.5px] sm:tracking-[2px] uppercase border-b-[1px] sm:border-b-[1.5px] border-white/40 hover:border-white pb-0.5 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] transition-all hover:-translate-y-px">
+                    Accreditations
+                </button>
+                <button onclick="switchView('datasets')" class="text-neutral-200 hover:text-white text-[10px] sm:text-sm font-bold tracking-[1.5px] sm:tracking-[2px] uppercase border-b-[1px] sm:border-b-[1.5px] border-white/40 hover:border-white pb-0.5 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] transition-all hover:-translate-y-px">
+                    Datasets
+                </button>
+            </div>
+            <div class="flex gap-4 sm:gap-9 flex-wrap justify-center">
+                <button onclick="switchView('resume')" class="text-neutral-200 hover:text-white text-[10px] sm:text-sm font-bold tracking-[1.5px] sm:tracking-[2px] uppercase border-b-[1px] sm:border-b-[1.5px] border-white/40 hover:border-white pb-0.5 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] transition-all hover:-translate-y-px">
+                    Resume / CV
+                </button>
+                <button onclick="switchView('contact')" class="text-neutral-200 hover:text-white text-[10px] sm:text-sm font-bold tracking-[1.5px] sm:tracking-[2px] uppercase border-b-[1px] sm:border-b-[1.5px] border-white/40 hover:border-white pb-0.5 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] transition-all hover:-translate-y-px">
+                    Contact
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== COMMON HEADER FOR SUB-PAGES ==================== -->
+    <template id="subpage-nav-template">
+        <div class="w-full flex items-center justify-between border-b border-white/10 pb-6 mb-8">
+            <div class="flex items-center space-x-4">
+                <button onclick="switchView('home')" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <div>
+                    <h2 class="text-2xl font-bold tracking-tight uppercase" id="page-title-heading">Page Title</h2>
+                    <p class="text-xs text-neutral-400 font-mono tracking-wide">(mdvilx) // Meet Dave</p>
+                </div>
+            </div>
+            <button onclick="switchView('home')" class="text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full border border-white/20 hover:bg-white hover:text-black transition-all">
+                Home
+            </button>
+        </div>
+    </template>
+
+    <!-- ==================== VIEW 2: PROJECTS ==================== -->
+    <section id="view-projects" class="view-section min-h-screen flex-col p-6 sm:p-12 z-10 relative overflow-y-auto">
+        <div class="max-w-6xl mx-auto w-full">
+            <div id="projects-nav-container"></div>
+
+            <!-- Filters & Search -->
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-4 mb-8">
+                <div class="flex gap-2 flex-wrap w-full sm:w-auto">
+                    <button onclick="filterProjects('all')" class="project-filter-btn px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-black transition-all" data-filter="all">All</button>
+                    <button onclick="filterProjects('Java')" class="project-filter-btn px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-neutral-900/80 border border-white/10 text-neutral-300 hover:text-white transition-all" data-filter="Java">Java Core</button>
+                    <button onclick="filterProjects('Systems')" class="project-filter-btn px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-neutral-900/80 border border-white/10 text-neutral-300 hover:text-white transition-all" data-filter="Systems">Systems & FinTech</button>
+                </div>
+                <div class="w-full sm:w-72 relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-neutral-400 text-sm"></i>
+                    <input type="text" id="projectSearch" oninput="searchProjects()" placeholder="Search projects..." class="w-full bg-neutral-900/80 border border-white/10 rounded-xl pl-10 pr-4 py-2 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-white/40 transition-all">
+                </div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Dynamically populated via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== VIEW 3: RESEARCH / ACCREDITATIONS ==================== -->
+    <section id="view-research" class="view-section min-h-screen flex-col p-6 sm:p-12 z-10 relative overflow-y-auto">
+        <div class="max-w-5xl mx-auto w-full">
+            <div id="research-nav-container"></div>
+
+            <div class="space-y-6" id="researchList">
+                <!-- Dynamically populated via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== VIEW 4: DATASETS ==================== -->
+    <section id="view-datasets" class="view-section min-h-screen flex-col p-6 sm:p-12 z-10 relative overflow-y-auto">
+        <div class="max-w-6xl mx-auto w-full">
+            <div id="datasets-nav-container"></div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="datasetsGrid">
+                <!-- Dynamically populated via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== VIEW 5: RESUME / CV ==================== -->
+    <section id="view-resume" class="view-section min-h-screen flex-col p-6 sm:p-12 z-10 relative overflow-y-auto">
+        <div class="max-w-4xl mx-auto w-full">
+            <div id="resume-nav-container"></div>
+
+            <!-- Resume Header & Download Button -->
+            <div class="glass-card rounded-2xl p-6 sm:p-8 mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
+                <div>
+                    <h3 class="text-3xl font-extrabold tracking-tight">Meet Dave</h3>
+                    <p class="text-neutral-400 text-sm mt-1">Aspiring Data Scientist & Computer Science Undergraduate</p>
+                    <div class="flex flex-wrap gap-4 mt-3 text-xs text-neutral-400">
+                        <span><i class="fa-solid fa-location-dot mr-1.5"></i>Surat, Gujarat, India</span>
+                        <span><i class="fa-solid fa-envelope mr-1.5"></i>meetdave.dev@gmail.com</span>
+                        <span><i class="fa-solid fa-phone mr-1.5"></i>+91 84859 83170</span>
+                    </div>
+                </div>
+                <button onclick="downloadResumePDF()" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-white text-black font-bold text-xs tracking-wider uppercase hover:bg-neutral-200 transition-all flex items-center justify-center space-x-2 shadow-xl">
+                    <i class="fa-solid fa-download"></i>
+                    <span>Download CV (PDF)</span>
+                </button>
+            </div>
+
+            <!-- Resume Content Sections -->
+            <div class="space-y-8">
+                <!-- Summary -->
+                <div class="glass-card rounded-2xl p-6 sm:p-8">
+                    <h4 class="text-lg font-bold uppercase tracking-wider mb-3 flex items-center text-neutral-200">
+                        <i class="fa-solid fa-user mr-3 text-white"></i>Professional Summary
+                    </h4>
+                    <p class="text-sm text-neutral-300 leading-relaxed">
+                        Computer Science student specializing in Artificial Intelligence, Machine Learning, Data Science, Python, SQL and Cloud Computing. Passionate about solving real-world problems using data analysis, predictive modeling and scalable software solutions. Seeking internship opportunities where I can contribute while continuously improving my technical and analytical skills.
+                    </p>
+                </div>
+
+                <!-- Education -->
+                <div class="glass-card rounded-2xl p-6 sm:p-8">
+                    <h4 class="text-lg font-bold uppercase tracking-wider mb-6 flex items-center text-neutral-200">
+                        <i class="fa-solid fa-graduation-cap mr-3 text-white"></i>Academic Foundation
+                    </h4>
+                    <div class="space-y-6 border-l border-white/10 pl-6 ml-2">
+                        <div class="relative">
+                            <div class="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-white ring-4 ring-black"></div>
+                            <span class="text-xs font-mono text-neutral-400">P P Savani University</span>
+                            <h5 class="text-lg font-bold mt-1">B.Tech in Computer Science & Engineering</h5>
+                            <p class="text-sm text-neutral-400 font-medium">Focus: AI, Neural Networks, DMS, DSA & DB Architecture</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills -->
+                <div class="glass-card rounded-2xl p-6 sm:p-8">
+                    <h4 class="text-lg font-bold uppercase tracking-wider mb-6 flex items-center text-neutral-200">
+                        <i class="fa-solid fa-code mr-3 text-white"></i>Technical Stack
+                    </h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <div>
+                            <h5 class="text-xs font-bold text-neutral-400 uppercase tracking-widest mb-3">Programming</h5>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-xs font-mono">Python</span>
+                                <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-xs font-mono">Java</span>
+                                <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-xs font-mono">MySQL</span>
+                                <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-xs font-mono">C Programming</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h5 class="text-xs font-bold text-neutral-400 uppercase tracking-widest mb-3">AI & Analytics</h5>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-xs font-mono">NumPy</span>
+                                <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-xs font-mono">Scikit-Learn</span>
+                                <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-xs font-mono">Deep Learning</span>
+                                <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-xs font-mono">Tableau</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h5 class="text-xs font-bold text-neutral-400 uppercase tracking-widest mb-3">Tools & Systems</h5>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-xs font-mono">Git & GitHub</span>
+                                <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-xs font-mono">VS Code</span>
+                                <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-xs font-mono">Eclipse</span>
+                                <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-xs font-mono">Oracle MySQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== VIEW 6: CONTACT ==================== -->
+    <section id="view-contact" class="view-section min-h-screen flex-col p-6 sm:p-12 z-10 relative overflow-y-auto">
+        <div class="max-w-3xl mx-auto w-full">
+            <div id="contact-nav-container"></div>
+
+            <div class="glass-card rounded-2xl p-6 sm:p-10">
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold tracking-tight">Get in Touch</h3>
+                    <p class="text-sm text-neutral-400 mt-1">Open for internships in AI, Data Science & Software Development. Send a message directly.</p>
+                </div>
+
+                <form id="contactForm" onsubmit="handleContactSubmit(event)" action="https://formspree.io/f/mrenraza" class="space-y-6" method="POST">
+                    <div class="space-y-2">
+                        <label for="userName" class="block text-xs font-bold uppercase tracking-wider text-neutral-300">Your Name</label>
+                        <input type="text" id="userName" name="name" class="w-full bg-neutral-900/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-white/40 transition-all" placeholder="e.g. John Doe" required minlength="2" autocomplete="name">
+                    </div>
+
+                    <div class="space-y-2">
+                        <label for="userEmail" class="block text-xs font-bold uppercase tracking-wider text-neutral-300">Gmail Address</label>
+                        <input 
+                            type="email" 
+                            id="userEmail" 
+                            name="email" 
+                            class="w-full bg-neutral-900/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-white/40 transition-all" 
+                            placeholder="example@gmail.com" 
+                            required 
+                            pattern="^[a-zA-Z0-9._%+-]+@gmail\.com$"
+                            title="Please enter a valid Gmail address ending with @gmail.com"
+                            autocomplete="email"
+                        >
+                    </div>
+
+                    <div class="space-y-2">
+                        <label for="userMessage" class="block text-xs font-bold uppercase tracking-wider text-neutral-300">Message</label>
+                        <textarea id="userMessage" name="message" rows="4" class="w-full bg-neutral-900/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-white/40 transition-all" placeholder="What are you looking to build?" required minlength="10"></textarea>
+                    </div>
+
+                    <input type="hidden" name="_subject" value="📬 New Website Message from Portfolio">
+
+                    <button type="submit" class="w-full py-3.5 rounded-xl bg-white text-black font-bold text-xs uppercase tracking-widest hover:bg-neutral-200 transition-all flex items-center justify-center space-x-2 shadow-xl">
+                        <span>Send Message</span> <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+
+                <div class="mt-10 pt-8 border-t border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+                    <div class="p-4 rounded-xl bg-white/5 border border-white/5">
+                        <i class="fa-solid fa-envelope text-white text-lg mb-2"></i>
+                        <h5 class="text-xs font-bold uppercase text-neutral-400">Direct Email</h5>
+                        <p class="text-xs text-white mt-1 font-mono">meetdave.dev@gmail.com</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-white/5 border border-white/5">
+                        <i class="fa-solid fa-location-dot text-white text-lg mb-2"></i>
+                        <h5 class="text-xs font-bold uppercase text-neutral-400">Location</h5>
+                        <p class="text-xs text-white mt-1">Surat, Gujarat, India</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-white/5 border border-white/5">
+                        <i class="fa-solid fa-phone text-white text-lg mb-2"></i>
+                        <h5 class="text-xs font-bold uppercase text-neutral-400">Phone</h5>
+                        <p class="text-xs text-white mt-1 font-mono">+91 84859 83170</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PROJECT DETAILS MODAL ==================== -->
+    <div id="projectModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-card rounded-2xl max-w-2xl w-full p-6 sm:p-8 relative border border-white/20 shadow-2xl">
+            <button onclick="closeProjectModal()" class="absolute top-6 right-6 w-9 h-9 rounded-full bg-white/15 hover:bg-white/30 flex items-center justify-center text-white transition-all">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modalContent">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== APPLICATION SCRIPTS ==================== -->
+    <script>
+        const projectsData = [
+            {
+                id: 1,
+                title: "Predictive Risk & Transaction Analytics Engine",
+                category: "Java",
+                tag: "Java • FinTech • Analytics",
+                desc: "Engineered core algorithms in Java to parse transactional data streams, calculate net cash flow, and generate automated risk vectors for account activity.",
+                details: "Built as part of an ATM and transaction processing system. Parses transaction logs, computes real-time net cash flow, and assesses account solvency thresholds.",
+                stars: "45",
+                forks: "12",
+                demoLink: "https://github.com/officialmeet/Java-ATM-System.git"
+            }
+        ];
+
+        const researchData = [
+            {
+                id: 1,
+                title: "Data Science Track Certification",
+                conference: "HP Life • Professional Accreditation",
+                date: "2026",
+                abstract: "Comprehensive training in data analysis methodologies, statistical modeling, and data-driven business decision making.",
+                citations: "REF: A-991",
+                pdfSize: "Verified",
+                link: "https://www.life-global.org/certificate/372d3cf7-97dc-4287-94ed-336e58b636da"
+            },
+            {
+                id: 2,
+                title: "Financial Intelligence Certification",
+                conference: "NJ-Group Academy • Financial Literacy",
+                date: "2026",
+                abstract: "Advanced financial intelligence curriculum focusing on asset management, cash flow analysis, and capital allocation.",
+                citations: "REF: F-221",
+                pdfSize: "Verified",
+                link: "https://pdflink.to/857faa27/"
+            },
+            {
+                id: 3,
+                title: "Introduction to HTML, CSS, & JavaScript",
+                conference: "IBM / Coursera • Web Development",
+                date: "2026",
+                abstract: "Frontend engineering accreditation covering modern responsive web design, DOM manipulation, and interactive web application structuring.",
+                citations: "REF: C-101",
+                pdfSize: "Verified",
+                link: "https://coursera.org/share/5d4619ddf227d6f29f6c8bf07e6d7dcb"
+            },
+            {
+                id: 4,
+                title: "Gemini Certified University Student",
+                conference: "Google for Education • AI Accreditation",
+                date: "January 2026",
+                abstract: "Official credential recognizing proficiency in leveraging generative AI models and advanced prompt engineering workflows in academic environments.",
+                citations: "REF: G-102",
+                pdfSize: "Verified",
+                link: "https://edu.exceedlms.com/student/award/ayi93LiRxdntTS2XajZoRn5t"
+            }
+        ];
+
+        const datasetsData = [
+            {
+                id: 1,
+                title: "formula_one_db",
+                downloads: "18.5k",
+                size: "45.2 MB",
+                desc: "Comprehensive historical Formula 1 data covering races, drivers, constructors, lap times, pit stops, and circuit details from 1950 to the present season.",
+                tags: ["Sports", "CSV", "Racing", "SQL"]
+            },
+            {
+                id: 2,
+                title: "ferrari_racing_db",
+                downloads: "2.8k",
+                size: "12.4 MB",
+                desc: "Comprehensive racing metrics for Scuderia Ferrari, detailing race performance, car telemetry, pit stop times, engine telemetry, and championship standing histories.",
+                tags: ["Sports", "Telemetry", "CSV", "SQL"]
+            }
+        ];
+
+        function switchView(viewId) {
+            document.querySelectorAll('.view-section').forEach(sec => {
+                sec.classList.remove('active');
+            });
+            const target = document.getElementById('view-' + viewId);
+            if (target) {
+                target.classList.add('active');
+                window.scrollTo(0, 0);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const templateHtml = document.getElementById('subpage-nav-template').innerHTML;
+            
+            ['projects', 'research', 'datasets', 'resume', 'contact'].forEach(view => {
+                const container = document.getElementById(`${view}-nav-container`);
+                if (container) {
+                    container.innerHTML = templateHtml;
+                    const titleHeading = container.querySelector('#page-title-heading');
+                    if (titleHeading) {
+                        if (view === 'research') {
+                            titleHeading.textContent = 'Accreditations';
+                        } else {
+                            titleHeading.textContent = view.charAt(0).toUpperCase() + view.slice(1);
+                        }
+                    }
+                }
+            });
+
+            renderProjects(projectsData);
+            renderResearch();
+            renderDatasets();
+        });
+
+        function renderProjects(data) {
+            const grid = document.getElementById('projectsGrid');
+            if (!grid) return;
+            grid.innerHTML = data.map(p => `
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between transition-all hover:-translate-y-1 cursor-pointer" onclick="openProjectModal(${p.id})">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-3 py-1 bg-white/10 rounded-full text-[10px] font-bold uppercase tracking-wider text-neutral-300">${p.category}</span>
+                            <div class="flex items-center space-x-3 text-xs text-neutral-400 font-mono">
+                                <span><i class="fa-solid fa-star text-yellow-400 mr-1"></i>${p.stars}</span>
+                                <span><i class="fa-solid fa-code-fork mr-1"></i>${p.forks}</span>
+                            </div>
+                        </div>
+                        <h4 class="text-xl font-bold mb-2">${p.title}</h4>
+                        <p class="text-xs font-mono text-neutral-400 mb-3">${p.tag}</p>
+                        <p class="text-sm text-neutral-300 line-clamp-3">${p.desc}</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-white/10 flex justify-between items-center text-xs font-bold uppercase tracking-wider">
+                        <span class="text-white hover:underline">View Details <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderResearch() {
+            const list = document.getElementById('researchList');
+            if (!list) return;
+            list.innerHTML = researchData.map(r => `
+                <div class="glass-card rounded-2xl p-6 sm:p-8">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-3">
+                        <span class="px-3 py-1 bg-white/10 rounded-full text-[10px] font-bold uppercase tracking-wider text-neutral-300">${r.conference}</span>
+                        <span class="text-xs font-mono text-neutral-400">${r.date}</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">${r.title}</h4>
+                    <p class="text-sm text-neutral-300 mb-6 leading-relaxed">${r.abstract}</p>
+                    <div class="flex flex-wrap justify-between items-center gap-4 pt-4 border-t border-white/10 text-xs font-mono text-neutral-400">
+                        <div class="flex items-center space-x-4">
+                            <span><i class="fa-solid fa-certificate mr-1.5 text-yellow-400"></i>${r.citations}</span>
+                            <span><i class="fa-solid fa-shield-check mr-1.5 text-green-400"></i>Status: ${r.pdfSize}</span>
+                        </div>
+                        <a href="${r.link}" target="_blank" class="px-4 py-2 rounded-xl bg-white text-black font-bold uppercase tracking-wider hover:bg-neutral-200 transition-all">
+                            View Certificate <i class="fa-solid fa-external-link-alt ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderDatasets() {
+            const grid = document.getElementById('datasetsGrid');
+            if (!grid) return;
+            grid.innerHTML = datasetsData.map(d => `
+                <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="text-xs font-mono text-neutral-400"><i class="fa-solid fa-database mr-1.5"></i>${d.size}</span>
+                            <span class="text-xs font-mono text-green-400"><i class="fa-solid fa-download mr-1"></i>${d.downloads} downloads</span>
+                        </div>
+                        <h4 class="text-xl font-bold mb-2">${d.title}</h4>
+                        <p class="text-sm text-neutral-300 mb-6">${d.desc}</p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            ${d.tags.map(t => `<span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded-lg text-[10px] font-mono text-neutral-300">${t}</span>`).join('')}
+                        </div>
+                        <button onclick="showToast('Success', 'Dataset download initialized.')" class="w-full py-3 rounded-xl bg-white/10 hover:bg-white hover:text-black font-bold text-xs uppercase tracking-widest transition-all">
+                            Access Dataset
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openProjectModal(id) {
+            const p = projectsData.find(item => item.id === id);
+            if (!p) return;
+            const content = document.getElementById('modalContent');
+            content.innerHTML = `
+                <span class="px-3 py-1 bg-white/10 rounded-full text-[10px] font-bold uppercase tracking-wider text-neutral-300">${p.category}</span>
+                <h3 class="text-2xl font-bold mt-3 mb-2">${p.title}</h3>
+                <p class="text-xs font-mono text-neutral-400 mb-4">${p.tag}</p>
+                <p class="text-sm text-neutral-300 mb-6 leading-relaxed">${p.details}</p>
+                <div class="flex items-center space-x-6 text-xs font-mono text-neutral-400 mb-8">
+                    <span><i class="fa-solid fa-star text-yellow-400 mr-1.5"></i>${p.stars} Stars</span>
+                    <span><i class="fa-solid fa-code-fork mr-1.5"></i>${p.forks} Forks</span>
+                </div>
+                <div class="flex gap-4">
+                    <a href="${p.demoLink}" target="_blank" class="flex-1 py-3 rounded-xl bg-white text-black font-bold text-xs uppercase tracking-widest text-center hover:bg-neutral-200 transition-all flex items-center justify-center space-x-2">
+                        <i class="fa-brands fa-github"></i>
+                        <span>View Repository on GitHub</span>
+                    </a>
+                </div>
+            `;
+            document.getElementById('projectModal').classList.remove('hidden');
+            document.getElementById('projectModal').classList.add('flex');
+        }
+
+        function closeProjectModal() {
+            document.getElementById('projectModal').classList.remove('flex');
+            document.getElementById('projectModal').classList.add('hidden');
+        }
+
+        function filterProjects(category) {
+            document.querySelectorAll('.project-filter-btn').forEach(btn => {
+                if(btn.dataset.filter === category) {
+                    btn.className = "project-filter-btn px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-black transition-all";
+                } else {
+                    btn.className = "project-filter-btn px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-neutral-900/80 border border-white/10 text-neutral-300 hover:text-white transition-all";
+                }
+            });
+
+            if (category === 'all') {
+                renderProjects(projectsData);
+            } else {
+                const filtered = projectsData.filter(p => p.category === category);
+                renderProjects(filtered);
+            }
+        }
+
+        function searchProjects() {
+            const query = document.getElementById('projectSearch').value.toLowerCase();
+            const filtered = projectsData.filter(p => 
+                p.title.toLowerCase().includes(query) || 
+                p.desc.toLowerCase().includes(query) || 
+                p.tag.toLowerCase().includes(query)
+            );
+            renderProjects(filtered);
+        }
+
+        function showToast(title, message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastTitle').textContent = title;
+            document.getElementById('toastMessage').textContent = message;
+            toast.classList.remove('translate-y-[-200%]');
+            setTimeout(() => {
+                toast.classList.add('translate-y-[-200%]');
+            }, 3500);
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            showToast('Message Sent', 'Thank you! Your message has been routed successfully.');
+            document.getElementById('contactForm').reset();
+        }
+
+        function downloadResumePDF() {
+            showToast('CV Download', 'Generating and downloading CV PDF...');
+        }
+    </script>
+</body>
+</html>
