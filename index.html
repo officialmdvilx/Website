@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meet Dave — Portfolio & Research</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Meet Dave</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -28,6 +29,7 @@
     <style>
         * {
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body, html {
@@ -35,7 +37,7 @@
             width: 100%;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             color: #ffffff;
-            background-color: transparent;
+            background-color: #050505;
             overflow-x: hidden;
         }
 
@@ -65,14 +67,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.92) 100%);
+            background: linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.35) 40%, rgba(0,0,0,0.95) 100%);
             z-index: 1;
             pointer-events: none;
         }
 
         /* Custom scrollbar for inner views */
         ::-webkit-scrollbar {
-            width: 6px;
+            width: 5px;
         }
         ::-webkit-scrollbar-track {
             background: rgba(5, 5, 5, 0.8);
@@ -80,9 +82,6 @@
         ::-webkit-scrollbar-thumb {
             background: rgba(255, 255, 255, 0.2);
             border-radius: 3px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 255, 255, 0.4);
         }
 
         .view-section {
@@ -132,26 +131,26 @@
     </div>
 
     <!-- ==================== VIEW 1: HOME ==================== -->
-    <section id="view-home" class="view-section active w-full h-screen flex-col justify-between p-6 sm:p-14 z-10 relative">
-        <!-- Top Section: Title & Clean Socials -->
+    <section id="view-home" class="view-section active w-full h-[100dvh] flex-col justify-between p-6 sm:p-14 pt-12 sm:pt-14 pb-8 sm:pb-12 z-10 relative">
+        <!-- Top Section: Title & Socials -->
         <header class="relative z-20">
-            <!-- Increased H1 font size for mobile -->
-            <h1 style="font-size: clamp(3.4rem, 11vw, 5.2rem); font-weight: 800; line-height: 0.98; letter-spacing: -2px; text-transform: uppercase; text-shadow: 0 4px 25px rgba(0,0,0,0.7); background: linear-gradient(180deg, #ffffff 0%, #dcdcdc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            <!-- Dynamically scaled title with safe top space -->
+            <h1 style="font-size: clamp(3.8rem, 13vw, 5.2rem); font-weight: 800; line-height: 0.95; letter-spacing: -2px; text-transform: uppercase; text-shadow: 0 4px 25px rgba(0,0,0,0.8); background: linear-gradient(180deg, #ffffff 0%, #dcdcdc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
                 Meet Dave
             </h1>
-            <div class="text-neutral-300 text-[11px] font-bold tracking-[2px] uppercase pb-0.5 mt-1 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+            <div class="text-neutral-300 text-[10px] sm:text-[11px] font-bold tracking-[2px] uppercase pb-0.5 mt-1.5 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
                 (mdvilx);
             </div>
             
-            <!-- Made social icons smaller on mobile -->
-             <div class="flex gap-6 items-center mt-6 flex-wrap">
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-white text-xl opacity-75 hover:opacity-100 hover:-translate-y-0.5 transition-all drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+            <!-- Social Icons -->
+            <div class="flex gap-5 items-center mt-5 flex-wrap">
+                <a href="https://instagram.com/mdvilx" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-white text-lg sm:text-xl opacity-80 hover:opacity-100 hover:-translate-y-0.5 transition-all drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
                     <i class="fa-brands fa-instagram"></i>
                 </a> 
-                <a href="https://github.com/officialmeet" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-white text-xl opacity-75 hover:opacity-100 hover:-translate-y-0.5 transition-all drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+                <a href="https://github.com/officialmdvilx" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-white text-lg sm:text-xl opacity-80 hover:opacity-100 hover:-translate-y-0.5 transition-all drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
                     <i class="fa-brands fa-github"></i>
                 </a>
-                <a href="mailto:meetdave.dev@gmail.com" aria-label="Email" class="text-white text-xl opacity-75 hover:opacity-100 hover:-translate-y-0.5 transition-all drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+                <a href="mailto:officialmdvilx@gmail.com" aria-label="Email" class="text-white text-lg sm:text-xl opacity-80 hover:opacity-100 hover:-translate-y-0.5 transition-all drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
                     <i class="fa-solid fa-envelope"></i>
                 </a>
             </div>
@@ -166,8 +165,6 @@
                     <h4 class="text-xl font-bold text-white mt-1">Meet Dave</h4>
                     <p class="text-xs text-neutral-300 mt-0.5">Computer Science DS & AI Undergraduate</p>
                 </div>
-            </div>
-            <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] font-mono text-neutral-400/80 uppercase tracking-widest whitespace-nowrap bg-black/60 px-3 py-1 rounded-full backdrop-blur-md border border-white/10 pointer-events-none">
             </div>
         </div>
 
@@ -197,24 +194,24 @@
 
     <!-- ==================== COMMON HEADER FOR SUB-PAGES ==================== -->
     <template id="subpage-nav-template">
-        <div class="w-full flex items-center justify-between border-b border-white/10 pb-6 mb-8">
-            <div class="flex items-center space-x-4">
-                <button onclick="switchView('home')" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all">
-                    <i class="fa-solid fa-arrow-left"></i>
+        <div class="w-full flex items-center justify-between border-b border-white/10 pb-5 mb-6 pt-2">
+            <div class="flex items-center space-x-3">
+                <button onclick="switchView('home')" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all">
+                    <i class="fa-solid fa-arrow-left text-xs sm:text-sm"></i>
                 </button>
                 <div>
-                    <h2 class="text-2xl font-bold tracking-tight uppercase" id="page-title-heading">Page Title</h2>
-                    <p class="text-xs text-neutral-400 font-mono tracking-wide">(mdvilx) // Meet Dave</p>
+                    <h2 class="text-xl sm:text-2xl font-bold tracking-tight uppercase" id="page-title-heading">Page Title</h2>
+                    <p class="text-[10px] sm:text-xs text-neutral-400 font-mono tracking-wide">(mdvilx) // Meet Dave</p>
                 </div>
             </div>
-            <button onclick="switchView('home')" class="text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full border border-white/20 hover:bg-white hover:text-black transition-all">
+            <button onclick="switchView('home')" class="text-[10px] sm:text-xs font-bold tracking-widest uppercase px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/20 hover:bg-white hover:text-black transition-all">
                 Home
             </button>
         </div>
     </template>
 
     <!-- ==================== VIEW 2: PROJECTS ==================== -->
-    <section id="view-projects" class="view-section min-h-screen flex-col p-6 sm:p-12 z-10 relative overflow-y-auto">
+    <section id="view-projects" class="view-section min-h-screen flex-col p-5 sm:p-12 z-10 relative overflow-y-auto">
         <div class="max-w-6xl mx-auto w-full">
             <div id="projects-nav-container"></div>
 
@@ -239,7 +236,7 @@
     </section>
 
     <!-- ==================== VIEW 3: RESEARCH / ACCREDITATIONS ==================== -->
-    <section id="view-research" class="view-section min-h-screen flex-col p-6 sm:p-12 z-10 relative overflow-y-auto">
+    <section id="view-research" class="view-section min-h-screen flex-col p-5 sm:p-12 z-10 relative overflow-y-auto">
         <div class="max-w-5xl mx-auto w-full">
             <div id="research-nav-container"></div>
 
@@ -250,7 +247,7 @@
     </section>
 
     <!-- ==================== VIEW 4: DATASETS ==================== -->
-    <section id="view-datasets" class="view-section min-h-screen flex-col p-6 sm:p-12 z-10 relative overflow-y-auto">
+    <section id="view-datasets" class="view-section min-h-screen flex-col p-5 sm:p-12 z-10 relative overflow-y-auto">
         <div class="max-w-6xl mx-auto w-full">
             <div id="datasets-nav-container"></div>
 
@@ -260,8 +257,50 @@
         </div>
     </section>
 
-    <!-- ==================== VIEW 5: RESUME / CV ==================== -->
-    <section id="view-resume" class="view-section min-h-screen flex-col p-6 sm:p-12 z-10 relative overflow-y-auto">
+    <!-- ==================== VIEW 5: MILESTONES & ACTIVITY ==================== -->
+    <section id="view-milestones" class="view-section min-h-screen flex-col p-5 sm:p-12 z-10 relative overflow-y-auto">
+        <div class="max-w-4xl mx-auto w-full">
+            <div id="milestones-nav-container"></div>
+
+            <div class="space-y-6">
+                <div class="glass-card rounded-2xl p-6 sm:p-8">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-3 py-1 bg-white/10 rounded-full text-xs font-mono text-neutral-300">October 2026</span>
+                        <span class="text-xs font-mono text-green-400"><i class="fa-solid fa-code-pull-request mr-1.5"></i>PR #57356</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">GitHub Domain Linkage</h4>
+                    <p class="text-sm text-neutral-300 leading-relaxed">
+                        Successfully submitted and merged Pull Request #57356 linking <code class="text-white font-mono bg-white/10 px-1.5 py-0.5 rounded">mdvilx.is-a.dev</code> to the official repository (<a href="https://github.com/officialmdvilx/Website" target="_blank" class="text-white underline">officialmdvilx/Website</a>).
+                    </p>
+                </div>
+
+                <div class="glass-card rounded-2xl p-6 sm:p-8">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-3 py-1 bg-white/10 rounded-full text-xs font-mono text-neutral-300">2026 Season</span>
+                        <span class="text-xs font-mono text-yellow-400"><i class="fa-solid fa-database mr-1.5"></i>Open Datasets</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">Formula 1 & Ferrari Racing Telemetry</h4>
+                    <p class="text-sm text-neutral-300 leading-relaxed">
+                        Published comprehensive racing and telemetry datasets (<code class="text-white font-mono bg-white/10 px-1.5 py-0.5 rounded">formula_one_db</code> & <code class="text-white font-mono bg-white/10 px-1.5 py-0.5 rounded">ferrari_racing_db</code>) optimized for SQL queries and predictive analytics workflows.
+                    </p>
+                </div>
+
+                <div class="glass-card rounded-2xl p-6 sm:p-8">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-3 py-1 bg-white/10 rounded-full text-xs font-mono text-neutral-300">January 2026</span>
+                        <span class="text-xs font-mono text-blue-400"><i class="fa-solid fa-graduation-cap mr-1.5"></i>Google Accreditation</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">Gemini Certified University Student</h4>
+                    <p class="text-sm text-neutral-300 leading-relaxed">
+                        Recognized by Google for Education for mastering prompt engineering, automated developer pipelines, and generative AI research tooling.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== VIEW 6: RESUME / CV ==================== -->
+    <section id="view-resume" class="view-section min-h-screen flex-col p-5 sm:p-12 z-10 relative overflow-y-auto">
         <div class="max-w-4xl mx-auto w-full">
             <div id="resume-nav-container"></div>
 
@@ -348,65 +387,90 @@
         </div>
     </section>
 
-    <!-- ==================== VIEW 6: CONTACT ==================== -->
-    <section id="view-contact" class="view-section min-h-screen flex-col p-6 sm:p-12 z-10 relative overflow-y-auto">
+    
+   <!-- ==================== VIEW 7: CONTACT ==================== -->
+    <section id="view-contact" class="view-section min-h-screen flex-col p-5 sm:p-12 z-10 relative overflow-y-auto">
         <div class="max-w-3xl mx-auto w-full">
             <div id="contact-nav-container"></div>
 
-            <div class="glass-card rounded-2xl p-6 sm:p-10">
-                <div class="mb-8">
-                    <h3 class="text-2xl font-bold tracking-tight">Get in Touch</h3>
-                    <p class="text-sm text-neutral-400 mt-1">Open for internships in AI, Data Science & Software Development. Send a message directly.</p>
+            <div class="glass-card rounded-2xl p-6 sm:p-10 relative overflow-hidden">
+                <!-- Live Availability Badge -->
+                <div class="absolute top-6 right-6 hidden sm:flex items-center space-x-2 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span class="text-[10px] font-mono text-emerald-300 uppercase tracking-wider">Available for Internships</span>
                 </div>
 
-                <form id="contactForm" onsubmit="handleContactSubmit(event)" action="https://formspree.io/f/mrenraza" class="space-y-6" method="POST">
-                    <div class="space-y-2">
-                        <label for="userName" class="block text-xs font-bold uppercase tracking-wider text-neutral-300">Your Name</label>
-                        <input type="text" id="userName" name="name" class="w-full bg-neutral-900/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-white/40 transition-all" placeholder="e.g. John Doe" required minlength="2" autocomplete="name">
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold tracking-tight">Initiate Transmission</h3>
+                    <p class="text-xs sm:text-sm text-neutral-400 mt-1">Looking to collaborate on AI models, Data Science research, or software engineering roles? Let’s connect.</p>
+                </div>
+
+                <form id="contactForm" onsubmit="handleContactSubmit(event)" action="https://formspree.io/f/mrenraza" class="space-y-5" method="POST">
+                    
+                    <!-- Inquiry Type Selector -->
+                    <div class="space-y-1.5">
+                        <label class="block text-xs font-bold uppercase tracking-wider text-neutral-300">Inquiry Classification</label>
+                        <select name="inquiry_type" class="w-full bg-neutral-900/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white/40 transition-all">
+                            <option value="Internship Opportunity" class="bg-neutral-900">💼 Software / AI / DS Internship</option>
+                            <option value="AI & Data Science Collaboration" class="bg-neutral-900">🤖 AI & Data Science Collaboration</option>
+                            <option value="Dataset / API Inquiry" class="bg-neutral-900">📊 Dataset / Telemetry Inquiry</option>
+                            <option value="General Connection" class="bg-neutral-900">✨ General Connection</option>
+                        </select>
                     </div>
 
-                    <div class="space-y-2">
-                        <label for="userEmail" class="block text-xs font-bold uppercase tracking-wider text-neutral-300">Gmail Address</label>
-                        <input 
-                            type="email" 
-                            id="userEmail" 
-                            name="email" 
-                            class="w-full bg-neutral-900/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-white/40 transition-all" 
-                            placeholder="example@gmail.com" 
-                            required 
-                            pattern="^[a-zA-Z0-9._%+-]+@gmail\.com$"
-                            title="Please enter a valid Gmail address ending with @gmail.com"
-                            autocomplete="email"
-                        >
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="space-y-1.5">
+                            <label for="userName" class="block text-xs font-bold uppercase tracking-wider text-neutral-300">Your Name</label>
+                            <input type="text" id="userName" name="name" class="w-full bg-neutral-900/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-white/40 transition-all" placeholder="e.g. Alan Turing" required minlength="2" autocomplete="name">
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <label for="userEmail" class="block text-xs font-bold uppercase tracking-wider text-neutral-300">Gmail Address</label>
+                            <input 
+                                type="email" 
+                                id="userEmail" 
+                                name="email" 
+                                class="w-full bg-neutral-900/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-white/40 transition-all" 
+                                placeholder="example@gmail.com" 
+                                required 
+                                pattern="^[a-zA-Z0-9._%+-]+@gmail\.com$"
+                                title="Please enter a valid Gmail address ending with @gmail.com"
+                                autocomplete="email"
+                            >
+                        </div>
                     </div>
 
-                    <div class="space-y-2">
-                        <label for="userMessage" class="block text-xs font-bold uppercase tracking-wider text-neutral-300">Message</label>
-                        <textarea id="userMessage" name="message" rows="4" class="w-full bg-neutral-900/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-white/40 transition-all" placeholder="What are you looking to build?" required minlength="10"></textarea>
+                    <div class="space-y-1.5">
+                        <label for="userMessage" class="block text-xs font-bold uppercase tracking-wider text-neutral-300">Project / Message Details</label>
+                        <textarea id="userMessage" name="message" rows="4" class="w-full bg-neutral-900/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-white/40 transition-all" placeholder="Describe the role, collaboration, or technical scope..." required minlength="10"></textarea>
                     </div>
 
-                    <input type="hidden" name="_subject" value="📬 New Website Message from Portfolio">
+                    <input type="hidden" name="_subject" value="📬 New Message via mdvilx.is-a.dev Portfolio">
 
-                    <button type="submit" class="w-full py-3.5 rounded-xl bg-white text-black font-bold text-xs uppercase tracking-widest hover:bg-neutral-200 transition-all flex items-center justify-center space-x-2 shadow-xl">
-                        <span>Send Message</span> <i class="fas fa-paper-plane"></i>
+                    <button type="submit" class="w-full py-3.5 rounded-xl bg-white text-black font-bold text-xs uppercase tracking-widest hover:bg-neutral-200 transition-all flex items-center justify-center space-x-2 shadow-xl cursor-pointer">
+                        <span>Transmit Message</span> <i class="fas fa-paper-plane"></i>
                     </button>
                 </form>
 
+                <!-- Quick Contact Grid Cards with Click-to-Copy -->
                 <div class="mt-10 pt-8 border-t border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
-                    <div class="p-4 rounded-xl bg-white/5 border border-white/5">
-                        <i class="fa-solid fa-envelope text-white text-lg mb-2"></i>
+                    <div onclick="copyToClipboard('meetdave.dev@gmail.com', 'Email Copied')" class="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-white/20 transition-all cursor-pointer group">
+                        <i class="fa-solid fa-envelope text-white text-lg mb-2 group-hover:scale-110 transition-transform"></i>
                         <h5 class="text-xs font-bold uppercase text-neutral-400">Direct Email</h5>
-                        <p class="text-xs text-white mt-1 font-mono">meetdave.dev@gmail.com</p>
+                        <p class="text-[11px] text-white mt-1 font-mono truncate">meetdave.dev@gmail.com</p>
+                        <span class="text-[9px] text-neutral-500 uppercase tracking-widest mt-1 block">Click to copy</span>
                     </div>
                     <div class="p-4 rounded-xl bg-white/5 border border-white/5">
                         <i class="fa-solid fa-location-dot text-white text-lg mb-2"></i>
                         <h5 class="text-xs font-bold uppercase text-neutral-400">Location</h5>
-                        <p class="text-xs text-white mt-1">Surat, Gujarat, India</p>
+                        <p class="text-xs text-white mt-1">Surat, India</p>
+                        <span class="text-[9px] text-emerald-400 font-mono mt-1 block">IST (UTC+5:30)</span>
                     </div>
-                    <div class="p-4 rounded-xl bg-white/5 border border-white/5">
-                        <i class="fa-solid fa-phone text-white text-lg mb-2"></i>
+                    <div onclick="copyToClipboard('+918485983170', 'Phone Copied')" class="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-white/20 transition-all cursor-pointer group">
+                        <i class="fa-solid fa-phone text-white text-lg mb-2 group-hover:scale-110 transition-transform"></i>
                         <h5 class="text-xs font-bold uppercase text-neutral-400">Phone</h5>
                         <p class="text-xs text-white mt-1 font-mono">+91 84859 83170</p>
+                        <span class="text-[9px] text-neutral-500 uppercase tracking-widest mt-1 block">Click to copy</span>
                     </div>
                 </div>
             </div>
@@ -517,7 +581,7 @@
         document.addEventListener("DOMContentLoaded", () => {
             const templateHtml = document.getElementById('subpage-nav-template').innerHTML;
             
-            ['projects', 'research', 'datasets', 'resume', 'contact'].forEach(view => {
+            ['projects', 'research', 'datasets', 'milestones', 'resume', 'contact'].forEach(view => {
                 const container = document.getElementById(`${view}-nav-container`);
                 if (container) {
                     container.innerHTML = templateHtml;
@@ -525,6 +589,8 @@
                     if (titleHeading) {
                         if (view === 'research') {
                             titleHeading.textContent = 'Accreditations';
+                        } else if (view === 'milestones') {
+                            titleHeading.textContent = 'Milestones';
                         } else {
                             titleHeading.textContent = view.charAt(0).toUpperCase() + view.slice(1);
                         }
@@ -684,6 +750,13 @@
 
         function downloadResumePDF() {
             showToast('CV Download', 'Generating and downloading CV PDF...');
+        }
+        function copyToClipboard(text, label) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast(label, text + ' copied to clipboard.');
+            }).catch(err => {
+                showToast('Error', 'Failed to copy text.');
+            });
         }
     </script>
 </body>
