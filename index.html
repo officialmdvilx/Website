@@ -72,7 +72,7 @@
             pointer-events: none;
         }
 
-        /* Organic Fluid Water-Drop Cursor */
+        /* Organic Fluid Water-Drop Cursor (Hidden on Mobile Devices) */
         #water-cursor {
             position: fixed;
             top: 0;
@@ -92,6 +92,12 @@
             transform: translate3d(0, 0, 0) rotate(0deg);
             will-change: transform, border-radius;
             mix-blend-mode: overlay;
+        }
+
+        @media (hover: none) and (pointer: coarse) {
+            #water-cursor {
+                display: none !important;
+            }
         }
 
         /* Preloader Overlay */
@@ -539,6 +545,12 @@
     <script>
         // Organic Fluid Water-Drop Cursor with Velocity Stretching & Rotation
         const cursor = document.getElementById('water-cursor');
+        const isMobileDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches || 'ontouchstart' in window;
+
+        if (isMobileDevice && cursor) {
+            cursor.style.display = 'none';
+        }
+
         let mouseX = window.innerWidth / 2;
         let mouseY = window.innerHeight / 2;
         let cursorX = mouseX;
@@ -546,37 +558,41 @@
         let lastMouseX = mouseX;
         let lastMouseY = mouseY;
 
-        window.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
+        if (!isMobileDevice) {
+            window.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
 
-        function animateCursor() {
-            let distX = mouseX - cursorX;
-            let distY = mouseY - cursorY;
+            function animateCursor() {
+                let distX = mouseX - cursorX;
+                let distY = mouseY - cursorY;
 
-            cursorX += distX * 0.2;
-            cursorY += distY * 0.2;
+                cursorX += distX * 0.2;
+                cursorY += distY * 0.2;
 
-            let velocityX = mouseX - lastMouseX;
-            let velocityY = mouseY - lastMouseY;
-            let speed = Math.sqrt(velocityX * velocityX + velocityY * velocityY);
-            
-            // Calculate angle of movement for organic droplet tilt
-            let angle = Math.atan2(velocityY, velocityX) * (180 / Math.PI);
+                let velocityX = mouseX - lastMouseX;
+                let velocityY = mouseY - lastMouseY;
+                let speed = Math.sqrt(velocityX * velocityX + velocityY * velocityY);
+                
+                // Calculate angle of movement for organic droplet tilt
+                let angle = Math.atan2(velocityY, velocityX) * (180 / Math.PI);
 
-            // Stretch water droplet based on speed
-            let scaleX = 1 + Math.min(speed * 0.025, 0.4);
-            let scaleY = 1 - Math.min(speed * 0.015, 0.2);
+                // Stretch water droplet based on speed
+                let scaleX = 1 + Math.min(speed * 0.025, 0.4);
+                let scaleY = 1 - Math.min(speed * 0.015, 0.2);
 
-            cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) rotate(${angle}deg) scale(${scaleX}, ${scaleY})`;
+                if (cursor) {
+                    cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) rotate(${angle}deg) scale(${scaleX}, ${scaleY})`;
+                }
 
-            lastMouseX = mouseX;
-            lastMouseY = mouseY;
+                lastMouseX = mouseX;
+                lastMouseY = mouseY;
 
+                requestAnimationFrame(animateCursor);
+            }
             requestAnimationFrame(animateCursor);
         }
-        requestAnimationFrame(animateCursor);
 
         const projectsData = [
             {
